@@ -1,5 +1,7 @@
 # Server Health Dashboard
 
+![Dashboard](docs/dashboard.png)
+
 A small monitoring system: a Python agent collects CPU, memory, and disk usage from a machine and sends it to a FastAPI backend. A web dashboard shows live gauges, usage history, and alerts.
 
 ```

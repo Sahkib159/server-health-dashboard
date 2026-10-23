@@ -174,7 +174,9 @@ function setGauge(key, value) {
 }
 
 function renderChart(points) {
-  const labels = points.map(p => new Date(p.ts * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+  const labels = points.map(p => new Date(p.ts * 1000).toLocaleTimeString([], state.minutes <= 60
+     ? { hour: "2-digit", minute: "2-digit", second: "2-digit" }
+     : { hour: "2-digit", minute: "2-digit" }));
   const series = [["CPU", "cpu", "--cpu"], ["Memory", "ram", "--ram"], ["Disk", "disk", "--disk"]];
   const datasets = series.map(([label, key, color]) => ({
     label, data: points.map(p => p[key]), borderColor: css(color), borderWidth: 2, pointRadius: 0, tension: 0.25,
